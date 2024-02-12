@@ -1,0 +1,80 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  void kontakKami() {
+    print("www.nicosyah.com");
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: Builder(builder: (context) {
+          return SingleChildScrollView(
+            child: Center(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("Selamat datang di Indonesia"),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("Selamat menikmati keindahan Indonesia"),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image(
+                        image: NetworkImage(
+                            "https://www.indonesia-tourism.com/bali/images/Tempel-Bedugul-.jpg")),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.network(
+                        "https://www.indonesia-tourism.com/bali/images/Tempel-Bedugul-.jpg"),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ElevatedButton(
+                        onPressed: () => myDialog(context),
+                        child: Text("Hubungi Kami")),
+                  ),
+                ],
+              ),
+            ),
+          );
+        }),
+        appBar: AppBar(
+          title: Text(
+            "Tour Indonesia",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+void myDialog(BuildContext ctx) {
+  showDialog(
+      context: ctx,
+      builder: (BuildContext konteks) {
+        return AlertDialog(
+          title: Text("Hubungi Kami"),
+          content: Text("Hubungi Kami di www.nicosyah.com"),
+          actions: [
+            ElevatedButton(
+              onPressed: () => Navigator.of(konteks).pop(),
+              child: Text("close"),
+            ),
+          ],
+        );
+      });
+}
